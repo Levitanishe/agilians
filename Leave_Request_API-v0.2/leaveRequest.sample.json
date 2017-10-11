@@ -1,0 +1,30 @@
+{
+  "createdOn" : [ 2015, 11, 16 ],
+  "createdBy" : "hello.world",
+  "modifiedOn" : [ 2015, 11, 16 ],
+  "modifiedBy" : "hello.world.mod",
+  "id" : "id123",
+  "submittedOn" : [ 2015, 11, 16 ],
+  "submittedBy" : "agile.agilians",
+  "attachments" : [ "attach1", "attach2" ],
+  "notes" : "notes 123",
+  "status" : "NEW",
+  "dayOfAbsences" : [ {
+    "date" : [ 2015, 11, 16 ],
+    "type" : "PUBLIC_HOLIDAY"
+  }, {
+    "date" : [ 2015, 11, 16 ],
+    "type" : "PRIVATE_HOLIDAY"
+  } ],
+  "approvals" : [ {
+    "approvedBy" : "agile.agilians1",
+    "approvedOn" : [ 2015, 11, 16 ],
+    "remarks" : "remarks 123",
+    "outcome" : "SENT_FOR_REVIEW"
+  }, {
+    "approvedBy" : "agile.agilians2",
+    "approvedOn" : [ 2015, 11, 16 ],
+    "remarks" : "remarks 234",
+    "outcome" : "APPROVED"
+  } ]
+}

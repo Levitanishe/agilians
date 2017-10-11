@@ -1,0 +1,16 @@
+{
+  "createdOn" : [ 2015, 11, 16 ],
+  "createdBy" : "hello.world",
+  "modifiedOn" : [ 2015, 11, 16 ],
+  "modifiedBy" : "hello.world.mod",
+  "id" : "id123",
+  "agreedOn" : [ 2015, 11, 16 ],
+  "agreedBy" : "agile.agilians",
+  "employeeId" : "emp123",
+  "validFrom" : [ 2015, 11, 16 ],
+  "validUntil" : [ 2015, 11, 16 ],
+  "dayOfAbsenceLimits" : [ {
+    "maximumCount" : 10,
+    "typeOfAbsence" : "PUBLIC_HOLIDAY"
+  } ]
+}

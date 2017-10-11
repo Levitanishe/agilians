@@ -1,0 +1,127 @@
+#%RAML 0.8
+title: Leave Request API
+version: 0.2
+baseUri: http://esb.dev.agilians.com:8086
+
+schemas:
+  - holidayAgreementSchema: !include holidayAgreement.schema.json
+  - holidayAgreementListSchema: !include holidayAgreement.list.schema.json
+  - leaveRequestSchema: !include leaveRequest.schema.json
+  - leaveRequestListSchema: !include leaveRequest.list.schema.json
+
+traits:
+  - subgroupable:
+      queryParameters:
+        fields: 
+          description: Fields to return in the request, ID is always returned
+          displayName: Fields
+          example: <<example>>
+          required: false
+  - pageable:
+      queryParameters:
+        count:
+          displayName: Count
+          type: number
+          description: Amount of items per page
+          example: 10
+          required: false
+        page:
+          displayName: Page
+          type: number
+          description: Index of page
+          example: 1
+          required: false
+
+/leave-requests:
+  displayName: Leave Request
+  get:
+    description: Retrieve list of Leave Requests
+    is: [ subgroupable: { example: "submittedBy, submittedOn, status" }, pageable ]
+    responses:
+      200:
+        description: Successfully retrieved list of requests
+        body:
+          application/json:
+            schema: leaveRequestListSchema
+  post:
+    description: Submit new Leave Request
+    body:
+      application/json:
+        schema: leaveRequestSchema
+    responses:
+      201:
+        description: Request succesfully submitted
+        body:
+          application/json:
+            schema: leaveRequestSchema
+            example: !include leaveRequest.sample.json
+  /{id}:
+    displayName: Leave Request with ID
+    get:
+      description: Retrieve Leave Request with ID
+      responses:
+        200:
+          description: Successfully retrieved leave request with id
+          body:
+            application/json:
+              schema: leaveRequestSchema
+              example: !include leaveRequest.sample.json
+    put:
+      description: Update Leave Request with ID
+      body:
+        application/json:
+          schema: leaveRequestSchema
+      responses:
+        200:
+          description: Successfully retrieved leave request with id
+          body:
+            application/json:
+              schema: leaveRequestSchema
+              example: !include leaveRequest.sample.json
+/holiday-agreements:
+  displayName: Holiday Agreement
+  get:
+    description: Retrieve list of Holiday Agreements
+    is: [ subgroupable: { example: "agreedBy, validFrom, validUntil" }, pageable ]
+    responses:
+      200:
+        description: Successfully retrieved list of holiday agreements
+        body:
+          application/json:
+            schema: holidayAgreementListSchema
+  post:
+    description: Submit new Holiday Agreement
+    body:
+      application/json:
+        schema: holidayAgreementSchema
+    responses:
+      201:
+        description: Successfully submitted a holiday agreement
+        body:
+          application/json:
+            schema: holidayAgreementSchema
+            example: !include holidayAgreement.sample.json
+  /{id}:
+    displayName: Holiday Agreement with ID
+    get:
+      description: Retrieve Holiday Agreement with ID
+      responses:
+        200:
+          description: Successfully retrieved holiday agreement with id
+          body:
+            application/json:
+              schema: holidayAgreementSchema
+              example: !include holidayAgreement.sample.json
+    put:
+      description: Update Holiday Agreement with ID
+      body:
+        application/json:
+          schema: holidayAgreementSchema
+          example: !include holidayAgreement.sample.json
+      responses:
+        200:
+          description: Successfully updated holiday agreement with id
+          body:
+            application/json:
+              schema: holidayAgreementSchema
+              example: !include holidayAgreement.sample.json
